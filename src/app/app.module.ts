@@ -5,6 +5,7 @@ import { RouteReuseStrategy } from '@angular/router';
 import { IonicModule, IonicRouteStrategy, Platform } from '@ionic/angular';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import { Clipboard } from '@ionic-native/clipboard/ngx';
 
 import { MyApp } from './app.component';
 
@@ -29,6 +30,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
   providers: [
     StatusBar,
     SplashScreen,
+    Clipboard,
     Platform,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     {provide: ErrorHandler, useClass: ErrorHandler}

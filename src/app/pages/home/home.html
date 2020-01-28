@@ -1,10 +1,10 @@
 <ion-header no-border>
   <ion-toolbar mode="ios" color="danger">
-    <ion-buttons slot="start" class="header-btns">
+    <ion-buttons slot="start" class="header-btns" (click)="minimizeApp()">
       <ion-icon name="remove-circle"></ion-icon>
     </ion-buttons>
     <ion-title>Red Packet</ion-title>
-    <ion-buttons slot="end" class="header-btns">
+    <ion-buttons slot="end" class="header-btns" (click)="closeApp()">
       <ion-icon name="close"></ion-icon>
     </ion-buttons>
   </ion-toolbar>

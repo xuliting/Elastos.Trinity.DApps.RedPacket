@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
 
+declare let appManager: any;
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',
@@ -31,5 +33,13 @@ export class HomePage {
     this.randomActive = false;
     this.fixedActive = false;
     this.nodeActive = true;
+  }
+
+  minimizeApp() {
+    appManager.launcher();
+  }
+
+  closeApp() {
+    appManager.close();
   }
 }

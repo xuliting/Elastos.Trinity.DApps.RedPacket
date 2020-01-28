@@ -1,0 +1,98 @@
+.section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  ion-img {
+    height: 80px;
+    width: 80px;
+  }
+
+  ion-label {
+    font-weight: 800;
+    font-size: 28px;
+  }
+
+  h4 {
+    font-size: 16px;
+    font-weight: 700;
+  }
+}
+
+.address {
+  border-bottom: 2px dashed #f04141;
+  border-top: 2px dashed #f04141;
+
+  h3 {
+    font-size: 16px;
+    font-weight: 800;
+  }
+
+  span {
+    font-size: 20px;
+    font-weight: 800;
+    color: #f04141;
+  }
+}
+
+.copied {
+  color: white;
+  border: 4px dashed black;
+}
+
+.summary {
+  margin-left: 10px;
+  margin-right: 10px;
+
+  h2 {
+    font-size: 20px;
+    font-weight: 800;
+  }
+}
+
+.details {
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  border-bottom: 1px dashed #f04141;
+  margin-left: 15px;
+  margin-right: 15px;
+
+  h4, p {
+    font-weight: 700;
+  }
+
+  h4 {
+    font-size: 12px !important;
+    margin: 16px 0;
+  }
+
+  p {
+    font-size: 14px !important;
+    margin: 16px;
+  }
+}
+
+.overflow {
+  border-bottom: 1px dashed #f04141;
+
+  ion-row {
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+
+    h4, p {
+      font-weight: 700;
+    }
+
+    h4 {
+      font-size: 12px !important;
+      margin: 16px 0;
+    }
+
+    p {
+      font-size: 14px !important;
+      margin: 0 0 16px;
+    }
+  }
+}
