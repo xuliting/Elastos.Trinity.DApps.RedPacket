@@ -1,0 +1,27 @@
+ion-header {
+  border-bottom: 2px solid black;;
+}
+
+ion-segment-button {
+  border-radius: 20px;
+  border: 4px solid black;
+  background-color: #f04141 !important;
+  margin: 5px;
+  padding: 5px;
+
+  ion-label {
+    font-weight: 700;
+    font-size: 14px;
+    margin: 5px;
+    color: black;
+  }
+}
+
+.highlight {
+  border: 4px dashed black;
+
+  ion-label {
+    color: white;
+    font-weight: 800;
+  }
+}

@@ -1,0 +1,172 @@
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+@font-face {
+  font-family: 'Raleway';
+  font-weight: 300;
+  font-style: normal;
+  src: url('assets/fonts/Raleway-Light.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Raleway';
+  font-weight: 400;
+  font-style: normal;
+  src: url('assets/fonts/Raleway-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Raleway';
+  font-weight: 500;
+  font-style: normal;
+  src: url('assets/fonts/Raleway-Medium.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Raleway';
+  font-weight: 600;
+  font-style: normal;
+  src: url('assets/fonts/Raleway-SemiBold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Raleway';
+  font-weight: 700;
+  font-style: normal;
+  src: url('assets/fonts/Raleway-Bold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Raleway';
+  font-weight: 800;
+  font-style: normal;
+  src: url('assets/fonts/Raleway-ExtraBold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Raleway';
+  font-weight: 900;
+  font-style: normal;
+  src: url('assets/fonts/Raleway-Black.ttf') format('truetype');
+}
+
+* {
+  font-family: 'Raleway' !important;
+}
+
+// Showing active tab in a different color
+:root {
+  ion-tab-button.tab-selected {
+    ion-icon, ion-label {
+      color: var(--ion-color-primary) !important;
+      --ion-color-base: var(--ion-color-primary) !important;
+    }
+  }
+
+  .item-interactive.ion-invalid{
+    --highlight-background: #f04141 !important;
+  }
+  .item-interactive.ion-valid{
+    --highlight-background: #10dc60 !important;
+  }
+}
+
+/** Header **/
+ion-header {
+  ion-toolbar {
+    .header-btns {
+      font-size: 24px;
+      padding: 16px;
+
+      ion-icon {
+        font-size: 24px;
+      }
+    }
+
+    ion-title {
+      font-size: 24px;
+      font-weight: 900;
+    }
+  }
+}
+
+.container {
+  min-height: 100%;
+  background-image: radial-gradient(73% 147%, #EADFDF 59%, #ECE2DF 100%), radial-gradient(91% 146%, rgba(255,255,255,0.50) 47%, rgba(0,0,0,0.50) 100%);
+  background-blend-mode: screen;
+}
+
+ion-item {
+  --ion-background-color: transparent;
+  width: 100%;
+}
+
+ion-row {
+  display: flex;
+  justify-content: space-between;
+
+  ion-col {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  h4 {
+    font-size: 24px;
+    font-weight: 900;
+    margin-bottom: 0;
+  }
+
+ /*  ion-input, ion-textarea {
+    border-bottom: 2px solid rgb(216, 216, 216);
+
+    --ion-input-highlight-color-focused {
+      border-bottom: 2px solid red;
+    }
+  } */
+}
+
+.button {
+  // position: fixed;
+  // bottom: 10px;
+  // left: 10px;
+  // right: 10px;
+  padding: 10px;
+  margin-top: 16px;
+  background-color: #f04141;
+  border: 4px solid black;
+  border-radius: 50px;
+
+  ion-label {
+    font-weight: 800;
+  }
+}
+
+.creatingPacket {
+  padding: 3px;
+  margin-top: 16px;
+  background-color: #f04141;
+  border: 4px dashed black;
+  border-radius: 50px;
+
+  ion-spinner {
+    color: white;
+  }
+}
+
+.add-btn {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+
+  ion-fab-button {
+    width: 30px;
+    height: 30px;
+  }
+}
+

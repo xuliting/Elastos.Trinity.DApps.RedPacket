@@ -1,0 +1,111 @@
+
+<ion-row padding-top>
+  <ion-col size="6">
+    <h4>Supernode</h4>
+  </ion-col>
+  <ion-col size="6" class="select">
+    <ion-spinner *ngIf="packetService._nodes.length === 0" name="bubbles"></ion-spinner>
+    <ion-select
+      *ngIf="packetService._nodes.length > 0"
+      mode="ios"
+      interface="popover"
+      okText="Okay"
+      cancelText="Dismiss"
+      placeholder="Select Node"
+      [(ngModel)]="publicKey"
+      (ionChange)="selectChanged($event)"
+    >
+      <ion-select-option *ngFor="let node of packetService._nodes" [value]="node.Ownerpublickey">{{ node.Nickname }}</ion-select-option>
+    </ion-select>
+  </ion-col>
+</ion-row>
+
+<ion-row class="section" padding-top>
+  <ion-col size="8">
+    <h4>ELA Amount</h4>
+  </ion-col>
+
+  <ion-col size="4">
+    <ion-item text-center>
+      <ion-input [(ngModel)]="ela" type="number" placeholder="#" required></ion-input>
+    </ion-item>
+  </ion-col>
+</ion-row>
+
+<ion-row class="section">
+  <ion-col size="8">
+    <h4>Packet Amount</h4>
+  </ion-col>
+  <ion-col size="4">
+    <ion-item text-center>
+      <ion-input [(ngModel)]="packets" type="number" placeholder="#" required></ion-input>
+    </ion-item>
+  </ion-col>
+</ion-row>
+
+<ion-row padding-top>
+  <ion-col size="12">
+    <h4>Nickname</h4>
+  </ion-col>
+</ion-row>
+
+<ion-row class="section">
+  <ion-col size="12">
+    <ion-item text-center expand="full">
+      <ion-input [(ngModel)]="name" type="text" placeholder="Enter your name" minLength="3" required></ion-input>
+    </ion-item>
+  </ion-col>
+</ion-row>
+
+<ion-row>
+  <ion-col size="12">
+    <h4>Packet Note</h4>
+  </ion-col>
+</ion-row>
+
+<ion-row class="section">
+  <ion-col size="12">
+    <ion-item text-center>
+      <ion-textarea
+        [(ngModel)]="note"
+        placeholder="Add a custom note (optional)"
+        type="text">
+      </ion-textarea>
+    </ion-item>
+  </ion-col>
+</ion-row>
+
+<ion-row padding-top>
+  <ion-col size="6">
+    <h4>Beneficiaries</h4>
+  </ion-col>
+  <ion-col size="6" class="add-btn">
+    <ion-fab-button color="danger" (click)="addLine()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-col>
+</ion-row>
+
+<ion-row class="section">
+  <ion-col size="12" *ngFor="let address of addresses; let i = index; trackBy: trackByFn">
+    <ion-item text-center>
+      <ion-input
+        [(ngModel)]="addresses[i]"
+        (ngModelChange)="addressChanged($event)"
+        placeholder="Add an address (optional)"
+        clearInput="true"
+        type="text">
+      </ion-input>
+    </ion-item>
+  </ion-col>
+</ion-row>
+
+<div *ngIf="creatingPacket === false" class="button" (click)="createPacket()">
+  <ion-label>Create Red Packet</ion-label>
+</div>
+
+<div *ngIf="creatingPacket === true" class="creatingPacket" disabled>
+  <ion-spinner name="dots"></ion-spinner>
+</div>
+
+

@@ -1,0 +1,22 @@
+<ion-header no-border>
+  <ion-toolbar mode="ios" color="danger">
+    <ion-buttons slot="start" class="header-btns" [routerLink]="['/']">
+      <ion-icon mode="ios" name="arrow-back"></ion-icon>
+    </ion-buttons>
+    <ion-title>Success!</ion-title>
+    <ion-buttons slot="end" class="header-btns">
+      <ion-icon name="close"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid name="container">
+    <ion-label>Red Packed Was Created!</ion-label>
+    <div>{{ hash }}</div>
+    <div>{{ payAddress }}</div>
+    <div>{{ ela }}</div>
+    <div>{{ packets }}</div>
+    <div>{{ beneficiaries }}</div>
+  </ion-grid>
+</ion-content>

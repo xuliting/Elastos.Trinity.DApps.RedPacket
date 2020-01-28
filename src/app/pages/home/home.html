@@ -1,0 +1,31 @@
+<ion-header no-border>
+  <ion-toolbar mode="ios" color="danger">
+    <ion-buttons slot="start" class="header-btns">
+      <ion-icon name="remove-circle"></ion-icon>
+    </ion-buttons>
+    <ion-title>Red Packet</ion-title>
+    <ion-buttons slot="end" class="header-btns">
+      <ion-icon name="close"></ion-icon>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="container" text-center padding>
+    <ion-segment color="danger">
+      <ion-segment-button mode="ios" value="random" [class.highlight]="randomActive" (click)="showRandom()">
+        <ion-label>Random</ion-label>
+      </ion-segment-button>
+      <ion-segment-button mode="ios" value="fixed" [class.highlight]="fixedActive" (click)="showFixed()">
+        <ion-label>Fixed</ion-label>
+      </ion-segment-button>
+      <ion-segment-button mode="ios" value="supernode" [class.highlight]="nodeActive" (click)="showNode()">
+        <ion-label>Supernode</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+
+    <app-random *ngIf="randomActive"></app-random>
+    <app-fixed *ngIf="fixedActive"></app-fixed>
+    <app-node *ngIf="nodeActive"></app-node>
+  </ion-grid>
+</ion-content>

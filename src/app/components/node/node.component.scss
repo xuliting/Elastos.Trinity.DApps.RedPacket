@@ -1,0 +1,11 @@
+.select {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  ion-select, ion-spinner {
+    margin-top: 10px;
+  }
+}
+
+
