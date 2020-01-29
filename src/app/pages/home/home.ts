@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
-
-declare let appManager: any;
+import { PacketService } from 'src/app/services/packet.service';
 
 @Component({
   selector: 'page-home',
@@ -14,7 +13,7 @@ export class HomePage {
   public fixedActive: boolean = false;
   public nodeActive: boolean = false;
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public packetService: PacketService) {
   }
 
   showRandom() {
@@ -33,13 +32,5 @@ export class HomePage {
     this.randomActive = false;
     this.fixedActive = false;
     this.nodeActive = true;
-  }
-
-  minimizeApp() {
-    appManager.launcher();
-  }
-
-  closeApp() {
-    appManager.close();
   }
 }

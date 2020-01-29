@@ -46,6 +46,7 @@ export class PacketCreatedPage implements OnInit {
   }
 
   async copyToast(address: string) {
+    console.log(address);
     const toast = await this.toastController.create({
       mode: 'ios',
       color: 'danger',

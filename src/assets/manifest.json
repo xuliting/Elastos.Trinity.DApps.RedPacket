@@ -30,7 +30,8 @@
   "plugins": [
     "Device",
     "SplashScreen",
-    "NetworkStatus"
+    "NetworkStatus",
+    "Clipboard"
   ],
   "urls": [
     "https://node1.elaphant.app/*",

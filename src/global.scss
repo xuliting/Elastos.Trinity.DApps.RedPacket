@@ -62,10 +62,21 @@
 
 // Showing active tab in a different color
 :root {
+  ion-tab-button {
+    --ripple-color: var(--ion-color-danger);
+  }
+
   ion-tab-button.tab-selected {
     ion-icon, ion-label {
-      color: var(--ion-color-primary) !important;
-      --ion-color-base: var(--ion-color-primary) !important;
+      color: var(--ion-color-danger) !important;
+      --ion-color-base: var(--ion-color-danger) !important;
+    }
+  }
+
+  ion-tab-button:hover {
+    ion-icon, ion-label {
+      color: var(--ion-color-danger) !important;
+      --ion-color-base: var(--ion-color-danger) !important;
     }
   }
 
@@ -79,6 +90,8 @@
 
 /** Header **/
 ion-header {
+  border-bottom: 2px solid black;
+
   ion-toolbar {
     .header-btns {
       font-size: 24px;
@@ -93,6 +106,22 @@ ion-header {
       font-size: 24px;
       font-weight: 900;
     }
+  }
+}
+
+/** Bottom tab-bar **/
+ion-tab-bar {
+  height: 9%;
+
+  ion-icon {
+    color: #989aa2;
+    font-size: 36px;
+  }
+
+  ion-label {
+    font-size: 9px;
+    font-weight: 700;
+    color: #989aa2;
   }
 }
 
@@ -121,17 +150,9 @@ ion-row {
     font-weight: 900;
     margin-bottom: 0;
   }
-
- /*  ion-input, ion-textarea {
-    border-bottom: 2px solid rgb(216, 216, 216);
-
-    --ion-input-highlight-color-focused {
-      border-bottom: 2px solid red;
-    }
-  } */
 }
 
-.button {
+.custom-btn {
   // position: fixed;
   // bottom: 10px;
   // left: 10px;

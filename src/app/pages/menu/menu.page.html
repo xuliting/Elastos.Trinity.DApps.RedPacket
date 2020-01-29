@@ -1,0 +1,40 @@
+<ion-app>
+
+  <ion-menu side="end" menuId='m1'>
+    <ion-header no-border>
+      <ion-toolbar>
+        <ion-title>
+          Red Packet
+        </ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content>
+      <ion-list>
+        <ion-menu-toggle>
+          <ion-item routerLink="/menu/home">
+            <ion-icon name="analytics"></ion-icon>
+            <ion-label padding>Elastos Blockchain</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+        <ion-menu-toggle>
+          <ion-item (click)="minimizeApp()">
+            <ion-icon name="remove-circle"></ion-icon>
+            <ion-label padding>Minimize App</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+        <ion-menu-toggle>
+          <ion-item (click)="closeApp()">
+              <ion-icon name="exit"></ion-icon>
+            <ion-label padding>Close App</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  <ion-router-outlet main></ion-router-outlet>
+
+</ion-app>

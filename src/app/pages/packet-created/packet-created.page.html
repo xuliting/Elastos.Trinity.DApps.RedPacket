@@ -39,11 +39,11 @@
         </ion-col>
       </ion-row>
 
-      <div *ngIf="copied === false" class="button" (click)="copyAddress()" text-center>
+      <div *ngIf="copied === false" class="custom-btn" (click)="copyAddress()" text-center>
         <ion-label>Copy Address</ion-label>
       </div>
 
-      <div *ngIf="copied === true" class="button" [class.copied]="copied === true" (click)="copyAddress()" text-center>
+      <div *ngIf="copied === true" class="custom-btn" [class.copied]="copied === true" (click)="copyAddress()" text-center>
         <ion-label>Address Copied</ion-label>
       </div>
     </div>
@@ -79,7 +79,7 @@
       </ion-row>
     </div>
 
-    <div class="button" (click)="openApp()" text-center margin>
+    <div class="custom-btn" (click)="openApp()" text-center margin>
       <ion-label>Open Wallet</ion-label>
     </div>
 
