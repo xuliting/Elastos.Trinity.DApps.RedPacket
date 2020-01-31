@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { NavigationExtras } from '@angular/router';
-import { Packet } from '../models/packets.model';
+import { Packet, PacketDetail } from '../models/packets.model';
 
 declare let appManager: any;
 
@@ -78,22 +78,40 @@ export class PacketService {
     appManager.close();
   }
 
-  /** TODO **/
-  peakPacket() {
-    console.log('Checking packet');
-    this.http.get<any>(this.packetApi + 'peek/' + 'packet_hash=Eb7ZKfEtTDs5r1DCoZik7EHFpRcKe53nL6' + '&show_receivers=true').subscribe((res) => {
-      console.log(res);
-    }, (err) => {
-      console.log(err);
+  // ex: 1273012468890214
+  // ex: 1779487419459895
+  peakPacket(hash: string): Promise<any> {
+    console.log('Checking packet', hash);
+    return new Promise((resolve, reject) => {
+      this.http.get<any>(
+        this.packetApi + 'peek/' +
+        `${'?packet_hash=' + hash + '&show_receivers=true'}`
+      ).subscribe((res) => {
+        console.log(res);
+        resolve(res.result.packet_detail);
+      }, (err) => {
+        console.log(err);
+        resolve();
+      });
     });
   }
 
-  grabPacket() {
-    console.log('Grabbing packet');
-    this.http.get<any>(this.packetApi + 'grab/' + 'packet_hash=6719330022590231&' + 'address=EbDLm4dndRAmTyEhh1zryY9Q8R5PoaZ64V&' + 'name=alice&').subscribe((res) => {
-      console.log(res);
-    }, (err) => {
-      console.log(err);
+  grabPacket(hash: string, address: string, name: string): Promise<any> {
+    console.log('Grabbing packet', hash, address, name);
+    return new Promise((resolve, reject) => {
+      this.http.get<any>(
+        this.packetApi + 'grab/' +
+        `${'?packet_hash=' + hash + '&address=' + address + '&name=' + name }`
+      ).subscribe((res) => {
+        console.log(res);
+        if(res.status === 200) {
+          resolve(res);
+        } else {
+          resolve();
+        }
+      }, (err) => {
+        resolve();
+      });
     });
   }
 }

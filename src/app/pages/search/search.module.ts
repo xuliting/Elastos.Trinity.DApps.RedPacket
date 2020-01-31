@@ -5,12 +5,14 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { PeekPage } from './peek.page';
+import { SearchPage } from './search.page';
+import { PeekComponent } from 'src/app/components/peek/peek.component';
+import { GrabComponent } from 'src/app/components/grab/grab.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: PeekPage
+    component: SearchPage
   }
 ];
 
@@ -21,6 +23,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [PeekPage]
+  declarations: [SearchPage, PeekComponent, GrabComponent]
 })
-export class PeekPageModule {}
+export class SearchPageModule {}

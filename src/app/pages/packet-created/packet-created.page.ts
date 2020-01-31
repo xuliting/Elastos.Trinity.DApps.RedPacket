@@ -39,19 +39,24 @@ export class PacketCreatedPage implements OnInit {
     });
   }
 
-  copyAddress() {
-    this.copied = true;
-    this.clipboard.copy(this.payAddress);
-    this.copyToast(this.payAddress)
+  copy(type: string) {
+    if(type === 'address') {
+      this.copied = true;
+      this.clipboard.copy(this.payAddress);
+      this.copyToast(type, this.payAddress)
+    } else {
+      this.clipboard.copy(this.hash);
+      this.copyToast(type, this.hash)
+    }
   }
 
-  async copyToast(address: string) {
-    console.log(address);
+  async copyToast(type: string, value: any) {
+    console.log(type, value);
     const toast = await this.toastController.create({
       mode: 'ios',
       color: 'danger',
-      header: 'Copied address',
-      message: address,
+      header: 'Copied ' + type,
+      message: value,
       duration: 2000
     });
     toast.present();

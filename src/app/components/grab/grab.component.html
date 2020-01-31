@@ -1,0 +1,64 @@
+<ion-row padding-top>
+  <ion-col size="12">
+    <h4>Packet Hash</h4>
+  </ion-col>
+</ion-row>
+
+<ion-row class="section">
+  <ion-col size="12">
+    <ion-item text-center>
+      <ion-textarea
+        [(ngModel)]="hash"
+        placeholder=" Enter red packet hash"
+        minlength="10"
+        type="text">
+      </ion-textarea>
+    </ion-item>
+  </ion-col>
+</ion-row>
+
+<ion-row>
+  <ion-col size="12">
+    <h4>Address</h4>
+  </ion-col>
+</ion-row>
+
+<ion-row class="section">
+  <ion-col size="12">
+    <ion-item text-center>
+      <ion-textarea
+        [(ngModel)]="address"
+        placeholder=" If you have rights to claim, enter your address"
+        minlength="10"
+        type="text">
+      </ion-textarea>
+    </ion-item>
+  </ion-col>
+</ion-row>
+
+<ion-row>
+  <ion-col size="12">
+    <h4>Nickname</h4>
+  </ion-col>
+</ion-row>
+
+<ion-row class="section">
+  <ion-col size="12">
+    <ion-item text-center>
+      <ion-textarea
+        [(ngModel)]="name"
+        placeholder=" Enter your name"
+        minlength="3"
+        type="text">
+      </ion-textarea>
+    </ion-item>
+  </ion-col>
+</ion-row>
+
+<div *ngIf="grabbingPacket === false" class="custom-btn" (click)="searchPacket()" text-center>
+  <ion-label>Grab Red Packet</ion-label>
+</div>
+
+<div *ngIf="grabbingPacket === true" class="creatingPacket" disabled>
+  <ion-spinner name="dots"></ion-spinner>
+</div>

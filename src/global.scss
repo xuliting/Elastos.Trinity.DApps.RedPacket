@@ -125,6 +125,32 @@ ion-tab-bar {
   }
 }
 
+/** Global segment-buttons **/
+ion-segment-button {
+  border-radius: 20px;
+  border: 4px solid black;
+  background-color: #f04141 !important;
+  margin: 5px;
+  padding: 5px;
+
+  ion-label {
+    font-weight: 700;
+    font-size: 14px;
+    margin: 5px;
+    color: black;
+  }
+}
+
+.highlight {
+  border: 4px dashed black;
+
+  ion-label {
+    color: white;
+    font-weight: 800;
+  }
+}
+
+/** Global pg container **/
 .container {
   min-height: 100%;
   background-image: radial-gradient(73% 147%, #EADFDF 59%, #ECE2DF 100%), radial-gradient(91% 146%, rgba(255,255,255,0.50) 47%, rgba(0,0,0,0.50) 100%);
@@ -152,6 +178,7 @@ ion-row {
   }
 }
 
+/** Global buttons **/
 .custom-btn {
   // position: fixed;
   // bottom: 10px;
@@ -159,6 +186,18 @@ ion-row {
   // right: 10px;
   padding: 10px;
   margin-top: 16px;
+  background-color: #f04141;
+  border: 4px solid black;
+  border-radius: 50px;
+
+  ion-label {
+    font-weight: 800;
+  }
+}
+
+.search-btn {
+  padding: 10px;
+  margin-top: 5px;
   background-color: #f04141;
   border: 4px solid black;
   border-radius: 50px;
@@ -191,3 +230,21 @@ ion-row {
   }
 }
 
+/** global search **/
+.search-container {
+  display: flex;
+  justify-content: center;
+  padding: 12px 0 0;
+
+  ion-searchbar {
+    width: 90%;
+    padding: 0;
+    margin: 0;
+
+    .searchbar-input-container{
+      .searchbar-input{
+          border-radius: 30px !important;
+      }
+    }
+  }
+}

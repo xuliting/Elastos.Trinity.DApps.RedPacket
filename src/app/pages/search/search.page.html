@@ -5,7 +5,7 @@
         <ion-icon name="remove-circle"></ion-icon>
       </ion-button>
     </ion-buttons>
-    <ion-title>Create Packet</ion-title>
+    <ion-title>Search Packet</ion-title>
     <ion-buttons slot="end" class="header-btns">
       <ion-button (click)="packetService.closeApp()">
         <ion-icon name="close"></ion-icon>
@@ -17,19 +17,15 @@
 <ion-content>
   <ion-grid class="container" text-center padding>
     <ion-segment color="danger">
-      <ion-segment-button mode="ios" value="random" [class.highlight]="randomActive" (click)="showRandom()">
-        <ion-label>Random</ion-label>
+      <ion-segment-button mode="ios" value="peek" [class.highlight]="peekActive" (click)="showPeek()">
+        <ion-label>Peek</ion-label>
       </ion-segment-button>
-      <ion-segment-button mode="ios" value="fixed" [class.highlight]="fixedActive" (click)="showFixed()">
-        <ion-label>Fixed</ion-label>
-      </ion-segment-button>
-      <ion-segment-button mode="ios" value="supernode" [class.highlight]="nodeActive" (click)="showNode()">
-        <ion-label>Supernode</ion-label>
+      <ion-segment-button mode="ios" value="grab" [class.highlight]="grabActive" (click)="showGrab()">
+        <ion-label>Grab</ion-label>
       </ion-segment-button>
     </ion-segment>
 
-    <app-random *ngIf="randomActive"></app-random>
-    <app-fixed *ngIf="fixedActive"></app-fixed>
-    <app-node *ngIf="nodeActive"></app-node>
+    <app-peek *ngIf="peekActive"></app-peek>
+    <app-grab *ngIf="grabActive"></app-grab>
   </ion-grid>
 </ion-content>

@@ -59,17 +59,23 @@
   margin-right: 15px;
 
   h4, p {
-    font-weight: 700;
+    font-size: 12px !important;
   }
 
   h4 {
-    font-size: 12px !important;
+    font-weight: 700;
     margin: 16px 0;
   }
 
   p {
-    font-size: 14px !important;
+    font-weight: 600;
     margin: 16px;
+    color: #868f96 !important;
+
+    span {
+      font-size: 20px;
+      color: #f04141;
+    }
   }
 }
 
@@ -82,17 +88,22 @@
     flex-wrap: wrap;
 
     h4, p {
-      font-weight: 700;
+      font-size: 12px !important;
     }
 
     h4 {
-      font-size: 12px !important;
+      font-weight: 700;
       margin: 16px 0;
     }
 
-    p {
-      font-size: 14px !important;
+    h5 {
       margin: 0 0 16px;
+    }
+
+    p {
+      font-weight: 600;
+      margin: 0 0 16px;
+      color: #868f96 !important;
     }
   }
 }

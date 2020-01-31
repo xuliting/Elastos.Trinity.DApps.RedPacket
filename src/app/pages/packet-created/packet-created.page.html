@@ -39,11 +39,11 @@
         </ion-col>
       </ion-row>
 
-      <div *ngIf="copied === false" class="custom-btn" (click)="copyAddress()" text-center>
+      <div *ngIf="copied === false" class="custom-btn" (click)="copy('address')" text-center>
         <ion-label>Copy Address</ion-label>
       </div>
 
-      <div *ngIf="copied === true" class="custom-btn" [class.copied]="copied === true" (click)="copyAddress()" text-center>
+      <div *ngIf="copied === true" class="custom-btn" [class.copied]="copied === true" (click)="copy('address')" text-center>
         <ion-label>Address Copied</ion-label>
       </div>
     </div>
@@ -56,7 +56,7 @@
 
     <ion-row class="details">
       <h4>Packet Hash</h4>
-      <p>{{ hash }}</p>
+      <p (click)="copy('hash')">{{ hash }} <span><ion-icon name="copy"></ion-icon></span></p>
     </ion-row>
 
     <ion-row class="details">

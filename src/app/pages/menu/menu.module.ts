@@ -13,8 +13,7 @@ const routes: Routes = [
     component: MenuPage,
     children: [
       { path: 'home', loadChildren: '../home/home.module#HomeModule'},
-      { path: 'peek', loadChildren: '../peek/peek.module#PeekPageModule' },
-      { path: 'grab', loadChildren: '../grab/grab.module#GrabPageModule' },
+      { path: 'search', loadChildren: '../search/search.module#SearchPageModule' },
       { path: 'packet-created', loadChildren: '../packet-created/packet-created.module#PacketCreatedPageModule' },
     ]
   },
