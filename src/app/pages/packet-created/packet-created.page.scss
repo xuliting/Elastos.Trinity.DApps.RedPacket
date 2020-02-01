@@ -14,14 +14,15 @@
   }
 
   h4 {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 700;
   }
 }
 
 .address {
-  border-bottom: 2px dashed #f04141;
-  border-top: 2px dashed #f04141;
+  // border-bottom: 4px solid #f04141;
+  // border-top: 4px solid #f04141;
+  // border-radius: 20px;
 
   h3 {
     font-size: 16px;
@@ -54,7 +55,7 @@
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  border-bottom: 1px dashed #f04141;
+  border-bottom: 1px solid #f04141;
   margin-left: 15px;
   margin-right: 15px;
 
@@ -80,7 +81,7 @@
 }
 
 .overflow {
-  border-bottom: 1px dashed #f04141;
+  border-bottom: 1px solid #f04141;
 
   ion-row {
     justify-content: space-between;
@@ -88,7 +89,7 @@
     flex-wrap: wrap;
 
     h4, p {
-      font-size: 12px !important;
+      font-size: 10px !important;
     }
 
     h4 {
@@ -104,6 +105,14 @@
       font-weight: 600;
       margin: 0 0 16px;
       color: #868f96 !important;
+    }
+  }
+}
+
+@media screen and (max-width: 375px){
+  .section {
+    ion-label {
+      font-size: 24px;
     }
   }
 }

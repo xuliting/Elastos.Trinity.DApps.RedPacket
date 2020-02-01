@@ -13,6 +13,7 @@ export class GrabComponent implements OnInit {
   public address: string = '';
   public name: string = '';
   public grabbingPacket: boolean = false;
+  public packetOpened: boolean = false;
 
   constructor(
     public packetService: PacketService,
@@ -25,6 +26,7 @@ export class GrabComponent implements OnInit {
     if(this.hash && this.address && this.name) {
       this.grabbingPacket = true;
       this.packetService.grabPacket(this.hash, this.address, this.name).then((res) => {
+        this.packetOpened = true;
         this.grabbingPacket = false;
 
         if(res) {
@@ -47,7 +49,7 @@ export class GrabComponent implements OnInit {
     const toast = await this.toastController.create({
       mode: 'ios',
       color: 'danger',
-      header: 'Congrats, ' + 'you are eligible for ' + ela + ' ELA!',
+      header: 'Congrats, ' + 'you claimed ' + ela + ' ELA!',
       message: 'If this red packet is charged, you should see your new balance once confirmed!',
       position: 'bottom',
       buttons: [
