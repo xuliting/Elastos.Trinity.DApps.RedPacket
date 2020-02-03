@@ -1,11 +1,11 @@
 {
   "id": "org.elastos.trinity.dapp.redpacket",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "version_code": 1,
-  "name": "RedPacket",
-  "short_name": "RedPacket",
-  "short_description": "Red Packet",
-  "description": "Red Packet App",
+  "name": "Red Packet",
+  "short_name": "Red Packet",
+  "short_description": "Send ELA red packets to share with friends.",
+  "description": "Send ELA red packets to share with friends. Choose the number of ELA to give away, and the number of receivers, and let others grab random amounts from your red packet!",
   "start_url": "index.html",
   "type": "app",
   "category": "finance",
@@ -22,9 +22,9 @@
     }
   ],
   "author": {
-    "name": "Chad Racelis",
-    "email": "chadracelis@yahoo.com",
-    "website": "https://github.com/chadracelis"
+    "name": "Elastos Foundation",
+    "email": "contact@elastos.org",
+    "website": "https://www.elastos.org"
   },
   "default_locale": "en",
   "plugins": [
