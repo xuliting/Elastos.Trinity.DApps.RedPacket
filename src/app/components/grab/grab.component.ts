@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { PacketService } from 'src/app/services/packet.service';
-import { ToastController } from '@ionic/angular';
+import { ToastController, AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-grab',
@@ -9,7 +9,7 @@ import { ToastController } from '@ionic/angular';
 })
 export class GrabComponent implements OnInit {
 
-  public hash: string = '';
+  @Input() public hash: string = '';
   public address: string = '';
   public name: string = '';
   public grabbingPacket: boolean = false;
@@ -18,24 +18,29 @@ export class GrabComponent implements OnInit {
   constructor(
     public packetService: PacketService,
     private toastController: ToastController,
+    private alertController: AlertController
   ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.hash);
+  }
 
   searchPacket() {
     if(this.hash && this.address && this.name) {
       this.grabbingPacket = true;
       this.packetService.grabPacket(this.hash, this.address, this.name).then((res) => {
-        this.packetOpened = true;
         this.grabbingPacket = false;
 
         if(res) {
           console.log(res);
 
           if(res.result.desc === 'Normal') {
-            this.toastSuccess(res.result.amount)
+            this.packetOpened = true;
+            // this.toastSuccess(res.result.amount)
+            this.alertSuccess(res.result.amount);
           } else {
-            this.toastFail()
+            // this.toastFail()
+            this.alertFail();
           }
 
         } else {
@@ -45,6 +50,7 @@ export class GrabComponent implements OnInit {
     }
   };
 
+  /**************** Toast Option ****************/
   async toastSuccess(ela: number) {
     const toast = await this.toastController.create({
       mode: 'ios',
@@ -90,6 +96,39 @@ export class GrabComponent implements OnInit {
       header: 'Form is incorrect',
       message: 'Please check the hash and address before submitting again',
       duration: 4000
+    });
+    toast.present();
+  }
+
+  /**************** Alert Option ****************/
+  async alertSuccess(ela: number) {
+    const toast = await this.alertController.create({
+      mode: 'ios',
+      header: 'Congrats, ' + 'you claimed ' + ela + ' ELA!',
+      message: 'If this red packet is charged, you should see your new balance once confirmed!',
+      buttons: [
+        {
+          text: 'Cool!',
+          handler: () => {
+          }
+        }
+      ]
+    });
+    toast.present();
+  }
+
+  async alertFail() {
+    const toast = await this.alertController.create({
+      mode: 'ios',
+      header: 'Sorry!',
+      message: 'Looks like you are too late or forbidden to open this red packet..',
+      buttons: [
+        {
+          text: 'Not cool!',
+          handler: () => {
+          }
+        }
+      ]
     });
     toast.present();
   }

@@ -11,12 +11,12 @@
   "category": "finance",
   "icons": [
     {
-      "src": "assets/images/logo.png",
+      "src": "assets/images/packet2.png",
       "sizes": "512x512",
       "type": "image/png"
     },
     {
-      "src": "assets/images/logo.png",
+      "src": "assets/images/packet2.png",
       "sizes": "128x128",
       "type": "image/png"
     }
@@ -39,5 +39,10 @@
   ],
   "background_color": "#4e8ef7",
   "theme_display": "show",
-  "theme_color": "#4e8ef7"
+  "theme_color": "#4e8ef7",
+  "intent_filters": [
+    {
+      "action": "gradredpacket"
+    }
+  ]
 }

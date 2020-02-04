@@ -3,8 +3,10 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { NavigationExtras } from '@angular/router';
 import { Packet, PacketDetail } from '../models/packets.model';
+import { Platform } from '@ionic/angular';
 
-declare let appManager: any;
+declare let appManager: AppManagerPlugin.AppManager;
+let managerService: any;
 
 @Injectable({
   providedIn: 'root'
@@ -15,14 +17,46 @@ export class PacketService {
   private packetApi: string = 'https://redpacket.elastos.org/api/v1/packet/';
   public _nodes: Node[] = [];
 
+  private handledIntentId: Number;
+
   constructor(
+    private platform: Platform,
     private http: HttpClient,
     private router: Router,
   ) { }
 
   async init() {
+    if(this.platform.platforms().indexOf("cordova") >= 0) {
+      console.log("Listening to intent events")
+      appManager.setIntentListener(
+        this.onReceiveIntent
+      );
+    }
+
     const height: number = await this.fetchCurrentHeight();
     this.fetchNodes(height);
+  }
+
+  onReceiveIntent = (ret) => {
+    console.log("Intent received", ret);
+
+    switch (ret.action) {
+      case "gradredpacket":
+        console.log('Intent recieved', ret);
+
+        this.handledIntentId = ret.intentId;
+        this.directToGrab(ret.params);
+    }
+  }
+
+  directToGrab(params) {
+    let props: NavigationExtras = {
+      queryParams: {
+        hash: params.hash,
+        name: params.name,
+      }
+    }
+    this.router.navigate(['/menu/search'], props);
   }
 
   fetchCurrentHeight(): Promise<number> {

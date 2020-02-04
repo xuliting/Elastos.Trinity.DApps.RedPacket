@@ -26,6 +26,6 @@
     </ion-segment>
 
     <app-peek *ngIf="peekActive"></app-peek>
-    <app-grab *ngIf="grabActive"></app-grab>
+    <app-grab *ngIf="grabActive" [hash]="hash"></app-grab>
   </ion-grid>
 </ion-content>
