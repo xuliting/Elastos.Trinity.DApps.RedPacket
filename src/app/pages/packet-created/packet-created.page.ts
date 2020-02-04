@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Clipboard } from '@ionic-native/clipboard/ngx';
 import { ToastController } from '@ionic/angular';
 
-declare let appManager: any;
+declare let appManager: AppManagerPlugin.AppManager;
 
 @Component({
   selector: 'app-packet-created',
@@ -48,6 +48,24 @@ export class PacketCreatedPage implements OnInit {
       this.clipboard.copy(this.hash);
       this.copyToast(type, this.hash)
     }
+  }
+
+  pay() {
+    appManager.sendIntent(
+      'pay',
+      {
+        toAddress: this.payAddress,
+        amount: this.ela,
+        memo: null,
+      },
+      {},
+      (res) => {
+        console.log(res);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 
   async copyToast(type: string, value: any) {

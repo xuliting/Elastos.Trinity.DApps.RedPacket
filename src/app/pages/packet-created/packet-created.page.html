@@ -13,7 +13,7 @@
 <ion-content>
   <ion-grid name="container">
 
-    <div class="address" padding margin>
+    <div class="address" padding-vertical margin-vertical>
       <ion-row>
         <ion-col class="section" no-padding>
           <ion-img src="../assets/images/packet2.png"></ion-img> <br>
@@ -34,17 +34,21 @@
 
       <ion-row>
         <ion-col class="section">
-          <h3>{{ payAddress }}</h3>
+          <h3 (click)="copy('address')">{{ payAddress }} <span><ion-icon name="copy"></ion-icon></span></h3>
         </ion-col>
       </ion-row>
 
+      <div class="custom-btn" (click)="pay()" text-center margin-horizontal>
+        <ion-label>Pay</ion-label>
+      </div>
+<!--
       <div *ngIf="copied === false" class="custom-btn" (click)="copy('address')" text-center>
         <ion-label>Copy Address</ion-label>
       </div>
 
       <div *ngIf="copied === true" class="custom-btn" [class.copied]="copied === true" (click)="copy('address')" text-center>
         <ion-label>Address Copied</ion-label>
-      </div>
+      </div> -->
     </div>
 
     <ion-row>
@@ -78,9 +82,9 @@
       </ion-row>
     </div>
 
-    <div class="custom-btn" (click)="openApp()" text-center margin>
-      <ion-label>Open Wallet</ion-label>
-    </div>
+   <!--  <div class="custom-btn" (click)="pay()" text-center margin>
+      <ion-label>Pay</ion-label>
+    </div> -->
 
   </ion-grid>
 </ion-content>

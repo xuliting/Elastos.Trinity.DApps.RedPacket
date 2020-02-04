@@ -1,38 +1,40 @@
-.section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  ion-img {
-    height: 80px;
-    width: 80px;
-  }
-
-  ion-label {
-    font-weight: 800;
-    font-size: 28px;
-  }
-
-  h4 {
-    font-size: 14px;
-    font-weight: 700;
-  }
-}
-
 .address {
   // border-bottom: 4px solid #f04141;
   // border-top: 4px solid #f04141;
   // border-radius: 20px;
 
-  h3 {
-    font-size: 16px;
-    font-weight: 800;
-  }
+  .section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-  span {
-    font-size: 20px;
-    font-weight: 800;
-    color: #f04141;
+    ion-img {
+      height: 80px;
+      width: 80px;
+    }
+
+    ion-label {
+      font-weight: 800;
+      font-size: 28px;
+    }
+
+    h4, h3 {
+      font-size: 14px;
+    }
+
+    h4 {
+      font-weight: 700;
+    }
+
+    h3 {
+      font-weight: 800;
+    }
+
+    span {
+      font-size: 20px;
+      font-weight: 800;
+      color: #f04141;
+    }
   }
 }
 
@@ -44,6 +46,7 @@
 .summary {
   margin-left: 10px;
   margin-right: 10px;
+  padding: 0 5px;
 
   h2 {
     font-size: 20px;
@@ -110,9 +113,11 @@
 }
 
 @media screen and (max-width: 375px){
-  .section {
-    ion-label {
-      font-size: 24px;
+  .address {
+    .section {
+      ion-label {
+        font-size: 24px;
+      }
     }
   }
 }
