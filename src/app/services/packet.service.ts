@@ -52,8 +52,8 @@ export class PacketService {
   directToGrab(params) {
     let props: NavigationExtras = {
       queryParams: {
-        hash: params.hash,
-        name: params.name,
+        hash: params.packet,
+        // name: params.name,
       }
     }
     this.router.navigate(['/menu/search'], props);

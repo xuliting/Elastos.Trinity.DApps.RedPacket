@@ -24,11 +24,11 @@ export class SearchPage implements OnInit {
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
-      if (params && params.hash && params.name) {
+      if (params && params.hash) {
         this.hash = params.hash;
         this.showGrab();
         // this.toastReceived(params.name);
-        this.alertReceived(params.name);
+        this.alertReceived(params.hash);
       }
     });
   }
@@ -64,10 +64,11 @@ export class SearchPage implements OnInit {
   }
 
   /**************** Alert Option ****************/
-  async alertReceived(name: string) {
+  async alertReceived(hash: string) {
     const toast = await this.alertController.create({
       mode: 'ios',
-      header: 'You received a red packet from ' + name,
+      header: 'You received a red packet!',
+      subHeader: hash,
       message: 'Enter your address and name to claim it!',
       buttons: [
         {
