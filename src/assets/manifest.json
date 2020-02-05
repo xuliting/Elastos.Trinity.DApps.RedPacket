@@ -8,6 +8,7 @@
   "description": "Send ELA red packets to share with friends. Choose the number of ELA to give away, and the number of receivers, and let others grab random amounts from your red packet!",
   "start_url": "index.html",
   "type": "app",
+  "start_visible": "hide",
   "category": "finance",
   "icons": [
     {
@@ -29,7 +30,6 @@
   "default_locale": "en",
   "plugins": [
     "Device",
-    "SplashScreen",
     "NetworkStatus",
     "Clipboard"
   ],

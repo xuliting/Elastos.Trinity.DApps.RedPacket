@@ -14,6 +14,10 @@ export class MenuPage implements OnInit {
   ngOnInit() {
   }
 
+  ionViewDidEnter() {
+    appManager.setVisible("show", ()=>{}, (err)=>{});
+  }
+
   minimizeApp() {
     appManager.launcher();
   }

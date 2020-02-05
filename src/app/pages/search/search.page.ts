@@ -3,6 +3,8 @@ import { PacketService } from 'src/app/services/packet.service';
 import { ActivatedRoute } from '@angular/router';
 import { ToastController, AlertController } from '@ionic/angular';
 
+declare let appManager: AppManagerPlugin.AppManager;
+
 @Component({
   selector: 'app-search',
   templateUrl: './search.page.html',
@@ -31,6 +33,10 @@ export class SearchPage implements OnInit {
         this.alertReceived(params.hash);
       }
     });
+  }
+
+  ionViewDidEnter() {
+    appManager.setVisible("show", ()=>{}, (err)=>{});
   }
 
   showPeek() {

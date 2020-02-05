@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { PacketService } from 'src/app/services/packet.service';
 
+declare let appManager: AppManagerPlugin.AppManager;
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',
@@ -14,6 +16,10 @@ export class HomePage {
   public nodeActive: boolean = false;
 
   constructor(public navCtrl: NavController, public packetService: PacketService) {
+  }
+
+  ionViewDidEnter() {
+    appManager.setVisible("show", ()=>{}, (err)=>{});
   }
 
   showRandom() {
