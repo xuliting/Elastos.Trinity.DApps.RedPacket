@@ -10,8 +10,8 @@ import { ToastController, AlertController } from '@ionic/angular';
 })
 export class SearchPage implements OnInit {
 
-  public peekActive: boolean = true;
-  public grabActive: boolean = false;
+  public peekActive: boolean = false;
+  public grabActive: boolean = true;
 
   public hash: string = '';
 

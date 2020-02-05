@@ -1,6 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, NgZone } from '@angular/core';
 import { PacketService } from 'src/app/services/packet.service';
 import { ToastController, AlertController } from '@ionic/angular';
+
+declare let appManager: AppManagerPlugin.AppManager;
 
 @Component({
   selector: 'app-grab',
@@ -18,11 +20,23 @@ export class GrabComponent implements OnInit {
   constructor(
     public packetService: PacketService,
     private toastController: ToastController,
-    private alertController: AlertController
+    private alertController: AlertController,
+    private zone: NgZone,
   ) { }
 
   ngOnInit() {
     console.log(this.hash);
+  }
+
+  getAddress() {
+    appManager.sendIntent("walletaccess", {elaaddress: {reason: 'For receiving red packet'}}, {}, (res) => {
+      this.zone.run(() => {
+        console.log(res);
+        this.address = res.result.walletinfo[0].elaaddress;
+      });
+    }, (err) => {
+      console.log(err);
+    });
   }
 
   searchPacket() {

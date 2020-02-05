@@ -42,7 +42,7 @@
   "theme_color": "#4e8ef7",
   "intent_filters": [
     {
-      "action": "gradredpacket"
+      "action": "grabredpacket"
     }
   ]
 }

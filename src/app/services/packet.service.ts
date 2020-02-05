@@ -31,7 +31,7 @@ export class PacketService {
       appManager.setIntentListener(
         this.onReceiveIntent
       );
-    }
+    };
 
     const height: number = await this.fetchCurrentHeight();
     this.fetchNodes(height);
@@ -41,7 +41,7 @@ export class PacketService {
     console.log("Intent received", ret);
 
     switch (ret.action) {
-      case "gradredpacket":
+      case "grabredpacket":
         console.log('Intent recieved', ret);
 
         this.handledIntentId = ret.intentId;
