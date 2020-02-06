@@ -42,10 +42,11 @@ export class PacketService {
 
     switch (ret.action) {
       case "grabredpacket":
-        console.log('Intent recieved', ret);
-
-        this.handledIntentId = ret.intentId;
-        this.directToGrab(ret.params);
+        appManager.hasPendingIntent(() => {
+          console.log('Intent recieved', ret);
+          this.handledIntentId = ret.intentId;
+          this.directToGrab(ret.params);
+        });
     }
   }
 

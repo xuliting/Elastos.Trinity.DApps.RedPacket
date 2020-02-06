@@ -32,10 +32,15 @@ export class GrabComponent implements OnInit {
     appManager.sendIntent("walletaccess", {elaaddress: {reason: 'For receiving red packet'}}, {}, (res) => {
       this.zone.run(() => {
         console.log(res);
-        this.address = res.result.walletinfo[0].elaaddress;
+        if(res.result.elaaddress) {
+          this.address = res.result.elaaddress;
+        } else {
+          this.toastWalletErr();
+        }
       });
     }, (err) => {
       console.log(err);
+      this.toastWalletErr();
     });
   }
 
@@ -109,6 +114,17 @@ export class GrabComponent implements OnInit {
       color: 'danger',
       header: 'Form is incorrect',
       message: 'Please check the hash and address before submitting again',
+      duration: 4000
+    });
+    toast.present();
+  }
+
+  async toastWalletErr() {
+    const toast = await this.toastController.create({
+      mode: 'ios',
+      color: 'danger',
+      header: 'Failed to get an address from your wallet',
+      message: 'Do you have your wallet setup?',
       duration: 4000
     });
     toast.present();
