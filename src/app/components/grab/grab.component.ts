@@ -71,21 +71,22 @@ export class GrabComponent implements OnInit {
   searchPacket() {
     if(this.hash && this.address && this.name) {
       this.grabbingPacket = true;
+
       this.packetService.grabPacket(this.hash, this.address, this.name).then((res) => {
         this.grabbingPacket = false;
 
         if(res) {
           console.log(res);
-
           if(res.result.desc === 'Normal') {
             this.packetOpened = true;
-            // this.toastSuccess(res.result.amount)
-            this.alertSuccess(res.result.amount);
+            if(res.result.first_grab === false) {
+              this.alertGrabbed()
+            } else {
+              this.alertSuccess(res.result.amount);
+            }
           } else {
-            // this.toastFail()
             this.alertFail();
           }
-
         } else {
           this.toastErr();
         }
@@ -163,6 +164,21 @@ export class GrabComponent implements OnInit {
       buttons: [
         {
           text: 'Cool!',
+          handler: () => {
+          }
+        }
+      ]
+    });
+    toast.present();
+  }
+
+  async alertGrabbed() {
+    const toast = await this.alertController.create({
+      mode: 'ios',
+      header: 'You already claimed this packet!',
+      buttons: [
+        {
+          text: 'Okay',
           handler: () => {
           }
         }
