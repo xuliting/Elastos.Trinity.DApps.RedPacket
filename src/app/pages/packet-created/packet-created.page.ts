@@ -15,6 +15,7 @@ export class PacketCreatedPage implements OnInit {
 
   public hash: string = "";
   public payAddress: string = "";
+  public packetType: string = "";
   public ela: number = null;
   public packets: number = null;
   public beneficiaries: string[] = [];
@@ -32,6 +33,7 @@ export class PacketCreatedPage implements OnInit {
       if (params) {
         this.hash = params.hash,
         this.payAddress = params.payAddress,
+        this.packetType = params.packetType,
         this.ela = params.ela,
         this.packets = params.packets,
         this.beneficiaries = params.beneficiaries
@@ -40,13 +42,16 @@ export class PacketCreatedPage implements OnInit {
   }
 
   copy(type: string) {
+    this.copied = true;
     if(type === 'address') {
-      this.copied = true;
       this.clipboard.copy(this.payAddress);
       this.copyToast(type, this.payAddress)
-    } else {
+    } else if(type === 'hash') {
       this.clipboard.copy(this.hash);
       this.copyToast(type, this.hash)
+    } else {
+      this.clipboard.copy('https://scheme.elastos.org/grabredpacket?packet=' + this.hash);
+      this.copyToast(type, 'https://scheme.elastos.org/grabredpacket?packet=' + this.hash);
     }
   }
 
@@ -54,7 +59,7 @@ export class PacketCreatedPage implements OnInit {
     appManager.sendIntent(
       'pay',
       {
-        toAddress: this.payAddress,
+        receiver: this.payAddress,
         amount: this.ela,
         memo: null,
       },

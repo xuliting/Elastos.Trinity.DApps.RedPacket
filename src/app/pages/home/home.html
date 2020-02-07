@@ -17,13 +17,13 @@
 <ion-content>
   <ion-grid class="container" text-center padding>
     <ion-segment color="danger">
-      <ion-segment-button mode="ios" value="random" [class.highlight]="randomActive" (click)="showRandom()">
+      <ion-segment-button class="packetType-btns" mode="ios" value="random" [class.highlight]="randomActive" (click)="showRandom()">
         <ion-label>Random</ion-label>
       </ion-segment-button>
-      <ion-segment-button mode="ios" value="fixed" [class.highlight]="fixedActive" (click)="showFixed()">
+      <ion-segment-button class="packetType-btns" mode="ios" value="fixed" [class.highlight]="fixedActive" (click)="showFixed()">
         <ion-label>Fixed</ion-label>
       </ion-segment-button>
-      <ion-segment-button mode="ios" value="supernode" [class.highlight]="nodeActive" (click)="showNode()">
+      <ion-segment-button class="packetType-btns" mode="ios" value="supernode" [class.highlight]="nodeActive" (click)="showNode()">
         <ion-label>Supernode</ion-label>
       </ion-segment-button>
     </ion-segment>

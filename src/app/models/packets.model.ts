@@ -18,12 +18,12 @@ export class PacketDetail {
     public packet_amt: string,
     public packet_blessing: string,
     public packet_creator: string,
-    public packet_end_timestamp: number,
+    public packet_end_timestamp: any,
     public packet_num: number,
     public packet_rcv_amt: number,
     public packet_rcv_num: number,
     public packet_rcver_details: any[],
-    public packet_start_timestamp: number,
+    public packet_start_timestamp: any,
     public packet_type: number
   ) {}
 }

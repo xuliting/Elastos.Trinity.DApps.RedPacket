@@ -87,10 +87,21 @@ export class PacketService {
       this.http.post<any>(this.packetApi + 'create', packet).subscribe((res) => {
         console.log(res);
         resolve(false);
+
+        let packetType: string = "";
+        if(packet.packet_type === 0) {
+          packetType = "Random"
+        } else if(packet.packet_type === 1) {
+          packetType = "Fixed"
+        } else {
+          packetType === "Supernode"
+        }
+
         let props: NavigationExtras = {
           queryParams: {
             hash: res.result.packet_hash,
             payAddress: res.result.pay_address,
+            packetType: packetType,
             ela: packet.packet_amt,
             packets: packet.packet_num,
             beneficiaries: packet.packet_allowed_rcv_addrs,

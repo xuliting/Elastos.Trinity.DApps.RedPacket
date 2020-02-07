@@ -14,7 +14,20 @@ ion-col {
   display: flex;
   align-items: flex-end;
 
-  ion-icon {
-    font-size: 24px;
+  span {
+    display: flex;
+    align-items: center;
+    padding-bottom: 2px;
+
+    p {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 500;
+      color: #007AFF;
+    }
   }
+}
+
+ion-icon {
+  font-size: 24px;
 }

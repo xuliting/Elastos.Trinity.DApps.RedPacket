@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, NgZone } from '@angular/core';
 import { PacketService } from 'src/app/services/packet.service';
 import { ToastController, AlertController } from '@ionic/angular';
+import { Clipboard } from '@ionic-native/clipboard/ngx';
 
 declare let appManager: AppManagerPlugin.AppManager;
 
@@ -22,6 +23,7 @@ export class GrabComponent implements OnInit {
     private toastController: ToastController,
     private alertController: AlertController,
     private zone: NgZone,
+    private clipboard: Clipboard,
   ) { }
 
   ngOnInit() {
@@ -34,6 +36,8 @@ export class GrabComponent implements OnInit {
         console.log(res);
         if(res.result.elaaddress) {
           this.address = res.result.elaaddress;
+        } else if(res.result.walletinfo) {
+          this.address = res.result.walletinfo[0].elaaddress
         } else {
           this.toastWalletErr();
         }
@@ -43,6 +47,26 @@ export class GrabComponent implements OnInit {
       this.toastWalletErr();
     });
   }
+
+  pasteHash(){
+    this.clipboard.paste().then((resolve: string) => {
+      this.hash = resolve;
+      console.log(resolve);
+    }, (reject: string) => {
+      console.error('Error: ' + reject);
+      }
+    );
+  };
+
+  pasteAddress(){
+    this.clipboard.paste().then((resolve: string) => {
+      this.address = resolve;
+      console.log(resolve);
+    }, (reject: string) => {
+      console.error('Error: ' + reject);
+      }
+    );
+  };
 
   searchPacket() {
     if(this.hash && this.address && this.name) {
