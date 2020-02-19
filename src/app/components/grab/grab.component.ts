@@ -2,6 +2,8 @@ import { Component, OnInit, Input, NgZone } from '@angular/core';
 import { PacketService } from 'src/app/services/packet.service';
 import { ToastController, AlertController } from '@ionic/angular';
 import { Clipboard } from '@ionic-native/clipboard/ngx';
+import { PacketDetail } from 'src/app/models/packets.model';
+import { Router, NavigationExtras } from '@angular/router';
 
 declare let appManager: AppManagerPlugin.AppManager;
 
@@ -16,7 +18,6 @@ export class GrabComponent implements OnInit {
   public address: string = '';
   public name: string = '';
   public grabbingPacket: boolean = false;
-  public packetOpened: boolean = false;
 
   constructor(
     public packetService: PacketService,
@@ -24,6 +25,7 @@ export class GrabComponent implements OnInit {
     private alertController: AlertController,
     private zone: NgZone,
     private clipboard: Clipboard,
+    private router: Router,
   ) { }
 
   ngOnInit() {
@@ -72,22 +74,36 @@ export class GrabComponent implements OnInit {
     if(this.hash && this.address && this.name) {
       this.grabbingPacket = true;
 
-      this.packetService.grabPacket(this.hash, this.address, this.name).then((res) => {
-        this.grabbingPacket = false;
+      this.packetService.grabPacket(this.hash, this.address, this.name).then((grabRes) => {
 
-        if(res) {
-          console.log(res);
-          if(res.result.desc === 'Normal') {
-            this.packetOpened = true;
-            if(res.result.first_grab === false) {
+        if(grabRes) {
+          console.log('Grabbed packet', grabRes);
+
+          if(grabRes.result.desc === 'Normal') {
+
+            if(grabRes.result.first_grab === false) {
+              this.grabbingPacket = false;
               this.alertGrabbed()
+
             } else {
-              this.alertSuccess(res.result.amount);
+              this.packetService.peakPacket(this.hash).then((peakRes) => {
+                console.log('Peaked packet', peakRes);
+                this.grabbingPacket = false;
+                let props: NavigationExtras = {
+                  queryParams: {
+                    packet: JSON.stringify(peakRes),
+                    ela: grabRes.result.amount
+                  }
+                }
+                this.router.navigate(['menu/packet-grabbed'], props)
+              });
             }
           } else {
-            this.alertFail();
+            this.grabbingPacket = false;
+            this.toastFail();
           }
         } else {
+          this.grabbingPacket = false;
           this.toastErr();
         }
       });
@@ -106,6 +122,22 @@ export class GrabComponent implements OnInit {
         {
           side: 'end',
           text: 'Cool!',
+          handler: () => {
+          }
+        }
+      ]
+    });
+    toast.present();
+  }
+
+
+  async toastGrabbed() {
+    const toast = await this.toastController.create({
+      mode: 'ios',
+      header: 'You already claimed this packet!',
+      buttons: [
+        {
+          text: 'Okay',
           handler: () => {
           }
         }
@@ -157,7 +189,7 @@ export class GrabComponent implements OnInit {
 
   /**************** Alert Option ****************/
   async alertSuccess(ela: number) {
-    const toast = await this.alertController.create({
+    const alert = await this.alertController.create({
       mode: 'ios',
       header: 'Congrats, ' + 'you claimed ' + ela + ' ELA!',
       message: 'If this red packet is charged, you should see your new balance once confirmed!',
@@ -169,11 +201,11 @@ export class GrabComponent implements OnInit {
         }
       ]
     });
-    toast.present();
+    alert.present();
   }
 
   async alertGrabbed() {
-    const toast = await this.alertController.create({
+    const alert = await this.alertController.create({
       mode: 'ios',
       header: 'You already claimed this packet!',
       buttons: [
@@ -184,11 +216,11 @@ export class GrabComponent implements OnInit {
         }
       ]
     });
-    toast.present();
+    alert.present();
   }
 
   async alertFail() {
-    const toast = await this.alertController.create({
+    const alert = await this.alertController.create({
       mode: 'ios',
       header: 'Sorry!',
       message: 'Looks like you are too late or forbidden to open this red packet..',
@@ -200,6 +232,6 @@ export class GrabComponent implements OnInit {
         }
       ]
     });
-    toast.present();
+    alert.present();
   }
 }

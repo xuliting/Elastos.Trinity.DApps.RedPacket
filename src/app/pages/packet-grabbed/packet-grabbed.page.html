@@ -1,0 +1,89 @@
+<ion-header no-border>
+  <ion-toolbar mode="ios" color="danger">
+    <ion-buttons slot="start" class="header-btns">
+      <ion-button (click)="packetService.minimizeApp()">
+        <ion-icon name="remove-circle"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Congrats!</ion-title>
+    <ion-buttons slot="end" class="header-btns">
+      <ion-button (click)="packetService.closeApp()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid name="container">
+
+    <ion-row padding-top>
+      <ion-col class="section" padding-top>
+        <ion-img src="../assets/images/packet3.png"></ion-img> <br>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col class="section">
+        <ion-label>Red Packet Claimed!</ion-label>
+      </ion-col>
+    </ion-row>
+
+    <ion-row text-center>
+      <ion-col class="section" padding>
+        <h4 no-margin>
+          You claimed <span>{{ ela }} ELA</span>! <br>
+          If this red packet is charged, you should <br>
+          see your new balance once confirmed!
+        </h4>
+      </ion-col>
+    </ion-row>
+
+    <div *ngIf="packet">
+      <ion-row padding-top>
+        <ion-col size="12" class="summary">
+          <h2>Packet Claimers</h2>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="details" *ngFor="let r of packet.packet_rcver_details">
+        <h4> {{ r.name }} </h4>
+        <p> {{ r.amount }} </p>
+      </ion-row>
+    </div>
+
+    <div *ngIf="packet">
+      <ion-row padding-top>
+        <ion-col size="12" class="summary">
+          <h2>Packet Summary</h2>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="details">
+        <h4>Packet Creator</h4>
+        <p>{{ packet.packet_creator }}</p>
+      </ion-row>
+
+      <ion-row class="details">
+        <h4>Packets Claimed</h4>
+        <p>{{ packet.packet_rcv_num }}</p>
+      </ion-row>
+
+      <ion-row class="details">
+        <h4>ELA Claimed</h4>
+        <p>{{ packet.packet_rcv_amt }}</p>
+      </ion-row>
+
+      <ion-row class="details">
+        <h4>Packets Remaining</h4>
+        <p>{{ packet.packet_num - packet.packet_rcv_num }}</p>
+      </ion-row>
+
+      <ion-row class="details">
+        <h4>ELA Remaining</h4>
+        <p>{{ packet.packet_amt - packet.packet_rcv_amt }}</p>
+      </ion-row>
+    </div>
+
+  </ion-grid>
+</ion-content>

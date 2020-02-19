@@ -15,6 +15,7 @@ const routes: Routes = [
       { path: 'home', loadChildren: '../home/home.module#HomeModule'},
       { path: 'search', loadChildren: '../search/search.module#SearchPageModule' },
       { path: 'packet-created', loadChildren: '../packet-created/packet-created.module#PacketCreatedPageModule' },
+      { path: 'packet-grabbed', loadChildren: '../packet-grabbed/packet-grabbed.module#PacketGrabbedPageModule' },
     ]
   },
   {

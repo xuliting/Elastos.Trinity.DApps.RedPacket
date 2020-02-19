@@ -1,15 +1,3 @@
-.section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  ion-img {
-    height: 120px;
-    width: 120px;
-  }
-}
-
-
 ion-col {
   display: flex;
   align-items: flex-end;
@@ -30,4 +18,14 @@ ion-col {
 
 ion-icon {
   font-size: 24px;
+}
+
+.summary {
+  margin: 0;
+  padding: 0 5px;
+
+  h2 {
+    font-size: 24px;
+    font-weight: 800;
+  }
 }
