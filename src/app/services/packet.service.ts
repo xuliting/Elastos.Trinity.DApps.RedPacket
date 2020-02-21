@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { NavigationExtras } from '@angular/router';
 import { Packet, PacketDetail } from '../models/packets.model';
-import { Platform } from '@ionic/angular';
+import { Platform, ToastController } from '@ionic/angular';
 
 declare let appManager: AppManagerPlugin.AppManager;
 let managerService: any;
@@ -23,6 +23,7 @@ export class PacketService {
     private platform: Platform,
     private http: HttpClient,
     private router: Router,
+    private toastController: ToastController
   ) { }
 
   async init() {
@@ -107,10 +108,10 @@ export class PacketService {
             beneficiaries: packet.packet_allowed_rcv_addrs,
           }
         }
-        // this.router.navigate(['packet-created'], props)
         this.router.navigate(['menu/packet-created'], props)
       }, (err) => {
         console.log(err);
+        this.formErr();
         resolve(false);
       });
     });
@@ -159,5 +160,16 @@ export class PacketService {
         resolve();
       });
     });
+  }
+
+  async formErr() {
+    const toast = await this.toastController.create({
+      mode: 'ios',
+      color: 'danger',
+      header: 'Form is incorrect',
+      message: 'Please check your packet before submitting again',
+      duration: 4000
+    });
+    toast.present();
   }
 }

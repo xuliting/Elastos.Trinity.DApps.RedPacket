@@ -73,8 +73,8 @@ export class SearchPage implements OnInit {
   async alertReceived(hash: string) {
     const toast = await this.alertController.create({
       mode: 'ios',
-      header: 'You received a red packet!',
-      subHeader: hash,
+      header: 'You opened a red packet!',
+     // subHeader: hash,
       message: 'Enter your address and name to claim it!',
       buttons: [
         {
