@@ -1,10 +1,10 @@
-<ion-row class="section" padding-top>
+<ion-row class="section" class="ion-padding-top">
   <ion-col size="8">
     <h4>ELA Amount</h4>
   </ion-col>
 
   <ion-col size="4">
-    <ion-item text-center>
+    <ion-item class="ion-text-center">
       <ion-input [(ngModel)]="ela" type="number" placeholder="#" required></ion-input>
     </ion-item>
   </ion-col>
@@ -15,13 +15,13 @@
     <h4>Packet Amount</h4>
   </ion-col>
   <ion-col size="4">
-    <ion-item text-center>
+    <ion-item class="ion-text-center">
       <ion-input [(ngModel)]="packets" type="number" maxlength="2000" placeholder="#" required></ion-input>
     </ion-item>
   </ion-col>
 </ion-row>
 
-<ion-row padding-top>
+<ion-row class="ion-padding-top">
   <ion-col size="12">
     <h4>Nickname</h4>
   </ion-col>
@@ -29,7 +29,7 @@
 
 <ion-row class="section">
   <ion-col size="12">
-    <ion-item text-center expand="full">
+    <ion-item class="ion-text-center" expand="full">
       <ion-input [(ngModel)]="name" type="text" placeholder="Enter your name" minLength="3" required></ion-input>
     </ion-item>
   </ion-col>
@@ -43,7 +43,7 @@
 
 <ion-row class="section">
   <ion-col size="12">
-    <ion-item text-center>
+    <ion-item class="ion-text-center">
       <ion-textarea
         [(ngModel)]="note"
         placeholder="Add a custom note (optional)"
@@ -53,7 +53,7 @@
   </ion-col>
 </ion-row>
 
-<ion-row padding-top>
+<ion-row class="ion-padding-top">
   <ion-col size="6">
     <h4>Beneficiaries</h4>
   </ion-col>
@@ -66,7 +66,7 @@
 
 <ion-row class="section">
   <ion-col size="12" *ngFor="let address of addresses; let i = index; trackBy: trackByFn">
-    <ion-item text-center>
+    <ion-item class="ion-text-center">
       <ion-input
         [(ngModel)]="addresses[i]"
         (ngModelChange)="addressChanged($event)"

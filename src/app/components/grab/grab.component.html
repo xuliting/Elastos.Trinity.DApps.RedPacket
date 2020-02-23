@@ -6,14 +6,14 @@
 
 <ion-row class="section">
   <ion-col size="12">
-    <ion-item text-center>
+    <ion-item class="ion-text-center">
       <ion-textarea
         [(ngModel)]="hash"
         placeholder=" Enter red packet hash"
         minlength="10"
         type="text">
       </ion-textarea>
-      <div margin-start (click)="pasteHash()">
+      <div class="ion-margin-start" (click)="pasteHash()">
         <ion-icon color="danger" name="clipboard"></ion-icon>
       </div>
     </ion-item>
@@ -32,14 +32,14 @@
 
 <ion-row class="section">
   <ion-col size="12">
-    <ion-item text-center>
+    <ion-item class="ion-text-center">
       <ion-textarea
         [(ngModel)]="address"
         placeholder=" If you have rights to claim, enter your address"
         minlength="10"
         type="text">
       </ion-textarea>
-      <div margin-start (click)="pasteAddress()">
+      <div class="ion-margin-start" (click)="pasteAddress()">
         <ion-icon color="danger" name="clipboard"></ion-icon>
       </div>
     </ion-item>
@@ -54,7 +54,7 @@
 
 <ion-row class="section">
   <ion-col size="12">
-    <ion-item text-center>
+    <ion-item class="ion-text-center">
       <ion-textarea
         [(ngModel)]="name"
         placeholder=" Enter your name"
@@ -65,7 +65,7 @@
   </ion-col>
 </ion-row>
 
-<div *ngIf="grabbingPacket === false" class="custom-btn" (click)="searchPacket()" text-center>
+<div *ngIf="grabbingPacket === false" class="custom-btn ion-text-center" (click)="searchPacket()">
   <ion-label>Grab Red Packet</ion-label>
 </div>
 

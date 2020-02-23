@@ -17,8 +17,8 @@
 <ion-content>
   <ion-grid name="container">
 
-    <ion-row padding-top>
-      <ion-col class="section" padding-top>
+    <ion-row class="ion-padding-top">
+      <ion-col class="section ion-padding-top">
         <ion-img src="../assets/images/packet3.png"></ion-img> <br>
       </ion-col>
     </ion-row>
@@ -29,9 +29,9 @@
       </ion-col>
     </ion-row>
 
-    <ion-row text-center>
-      <ion-col class="section" padding>
-        <h4 no-margin>
+    <ion-row class="ion-text-center">
+      <ion-col class="section ion-padding">
+        <h4 class="ion-no-margin">
           You received <span>{{ ela }} ELA</span>! <br>
           If this red packet is charged, you should <br>
           see your new balance once confirmed!
@@ -40,7 +40,7 @@
     </ion-row>
 
     <div *ngIf="packet">
-      <ion-row padding-top>
+      <ion-row class="ion-padding-top">
         <ion-col size="12" class="summary">
           <h2>Packet Claimers</h2>
         </ion-col>
@@ -53,7 +53,7 @@
     </div>
 
     <div *ngIf="packet">
-      <ion-row padding-top>
+      <ion-row class="ion-padding-top">
         <ion-col size="12" class="summary">
           <h2>Packet Summary</h2>
         </ion-col>

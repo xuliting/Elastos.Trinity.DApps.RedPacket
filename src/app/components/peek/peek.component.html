@@ -1,4 +1,4 @@
-<ion-row padding-top>
+<ion-row class="ion-padding-top">
   <ion-col size="12">
     <h4>Packet Hash</h4>
   </ion-col>
@@ -6,7 +6,7 @@
 
 <ion-row class="section">
   <ion-col size="12">
-    <ion-item text-center>
+    <ion-item class="ion-text-center">
       <ion-input
         [(ngModel)]="hash"
         placeholder="Enter red packet hash"
@@ -18,7 +18,7 @@
   </ion-col>
 </ion-row>
 
-<div *ngIf="!seekingPacket" class="custom-btn" (click)="searchHash()" text-center>
+<div *ngIf="!seekingPacket" class="custom-btn ion-text-center" (click)="searchHash()">
   <ion-label>Seek Red Packet</ion-label>
 </div>
 
@@ -26,12 +26,12 @@
   <ion-spinner name="dots"></ion-spinner>
 </div>
 
-<div *ngIf="seekingPacket" padding margin text-center>
+<div *ngIf="seekingPacket" class="ion-padding ion-margin ion-text-center">
   <ion-spinner name="crescent" color="danger"></ion-spinner>
 </div>
 
 <div *ngIf="packet && !seekingPacket">
-  <ion-row padding-top>
+  <ion-row class="ion-padding-top">
     <ion-col size="12" class="summary">
       <h2>Packet Details</h2>
     </ion-col>
@@ -86,7 +86,7 @@
     </ion-row>
   </div>
 
-  <div *ngIf="packet.packet_rcver_details.length > 0" class="overflow" margin-horizontal>
+  <div *ngIf="packet.packet_rcver_details.length > 0" class="overflow ion-margin-horizontal">
     <ion-row>
       <h4>Claimed Receivers</h4>
     </ion-row>
