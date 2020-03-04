@@ -40,10 +40,6 @@ export class RandomComponent implements OnInit {
     return index;
   }
 
-  validatePacket(form: NgForm) {
-
-  }
-
   /** Submit packet form **/
   createPacket() {
     this.addresses = this.addresses.filter(Boolean);

@@ -4,6 +4,7 @@ import { ToastController, AlertController } from '@ionic/angular';
 import { Clipboard } from '@ionic-native/clipboard/ngx';
 import { PacketDetail } from 'src/app/models/packets.model';
 import { Router, NavigationExtras } from '@angular/router';
+import { StorageService } from 'src/app/services/storage.service';
 
 declare let appManager: AppManagerPlugin.AppManager;
 
@@ -21,6 +22,7 @@ export class GrabComponent implements OnInit {
 
   constructor(
     public packetService: PacketService,
+    private storageService: StorageService,
     private toastController: ToastController,
     private alertController: AlertController,
     private zone: NgZone,
@@ -30,6 +32,9 @@ export class GrabComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.hash);
+    this.storageService.getAddress().then((res) => {
+      if(res) this.address = res;
+    });
   }
 
   getAddress() {
@@ -73,6 +78,7 @@ export class GrabComponent implements OnInit {
   searchPacket() {
     if(this.hash && this.address && this.name) {
       this.grabbingPacket = true;
+      this.storageService.setAddress(this.address);
 
       this.packetService.grabPacket(this.hash, this.address, this.name).then((grabRes) => {
 
@@ -95,7 +101,7 @@ export class GrabComponent implements OnInit {
                     ela: grabRes.result.amount
                   }
                 }
-                this.router.navigate(['menu/packet-grabbed'], props)
+                this.router.navigate(['/packet-grabbed'], props)
               });
             }
           } else {

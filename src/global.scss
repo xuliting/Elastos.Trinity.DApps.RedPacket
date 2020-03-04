@@ -193,7 +193,7 @@ ion-row {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  border-bottom: 1px solid #f04141;
+  border-bottom: 0.5px solid #f04141;
   margin-left: 15px;
   margin-right: 15px;
 
@@ -217,7 +217,7 @@ ion-row {
 }
 
 .overflow {
-  border-bottom: 1px solid #f04141;
+  border-bottom: 0.5px solid #f04141;
 
   ion-row {
     justify-content: space-between;

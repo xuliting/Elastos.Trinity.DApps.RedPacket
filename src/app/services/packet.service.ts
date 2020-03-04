@@ -58,7 +58,7 @@ export class PacketService {
         // name: params.name,
       }
     }
-    this.router.navigate(['/menu/search'], props);
+    this.router.navigate(['/search'], props);
   }
 
   fetchCurrentHeight(): Promise<number> {
@@ -108,7 +108,7 @@ export class PacketService {
             beneficiaries: packet.packet_allowed_rcv_addrs,
           }
         }
-        this.router.navigate(['menu/packet-created'], props)
+        this.router.navigate(['/packet-created'], props)
       }, (err) => {
         console.log(err);
         this.formErr();
