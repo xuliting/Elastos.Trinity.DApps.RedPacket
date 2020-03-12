@@ -3,6 +3,9 @@ import { ActivatedRoute } from '@angular/router';
 import { PacketDetail } from 'src/app/models/packets.model';
 import { PacketService } from 'src/app/services/packet.service';
 
+declare let appManager: AppManagerPlugin.AppManager;
+declare let titleBarManager: TitleBarPlugin.TitleBarManager;
+
 @Component({
   selector: 'app-packet-grabbed',
   templateUrl: './packet-grabbed.page.html',
@@ -29,4 +32,12 @@ export class PacketGrabbedPage implements OnInit {
     });
   }
 
+  ionViewDidEnter() {
+    appManager.setVisible("show");
+
+    titleBarManager.setTitle("Congrats!");
+    titleBarManager.setNavigationMode(TitleBarPlugin.TitleBarNavigationMode.CLOSE);
+    titleBarManager.setBackgroundColor("#f04141");
+    titleBarManager.setForegroundMode(TitleBarPlugin.TitleBarForegroundMode.LIGHT);
+  }
 }

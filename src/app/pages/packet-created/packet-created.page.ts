@@ -5,6 +5,7 @@ import { Clipboard } from '@ionic-native/clipboard/ngx';
 import { ToastController } from '@ionic/angular';
 
 declare let appManager: AppManagerPlugin.AppManager;
+declare let titleBarManager: TitleBarPlugin.TitleBarManager;
 
 @Component({
   selector: 'app-packet-created',
@@ -39,6 +40,15 @@ export class PacketCreatedPage implements OnInit {
         this.beneficiaries = params.beneficiaries
       }
     });
+  }
+
+  ionViewDidEnter() {
+    appManager.setVisible("show");
+
+    titleBarManager.setTitle("Success!");
+    titleBarManager.setNavigationMode(TitleBarPlugin.TitleBarNavigationMode.CLOSE);
+    titleBarManager.setBackgroundColor("#f04141");
+    titleBarManager.setForegroundMode(TitleBarPlugin.TitleBarForegroundMode.LIGHT);
   }
 
   copy(type: string) {

@@ -15,6 +15,7 @@ export class MyApp {
       packetService.init();
       statusBar.styleDefault();
       splashScreen.hide();
+      
       navController.navigateRoot("/home");
     });
   }

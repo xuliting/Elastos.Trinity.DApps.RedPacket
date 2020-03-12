@@ -3,6 +3,7 @@ import { NavController } from '@ionic/angular';
 import { PacketService } from 'src/app/services/packet.service';
 
 declare let appManager: AppManagerPlugin.AppManager;
+declare let titleBarManager: TitleBarPlugin.TitleBarManager;
 
 @Component({
   selector: 'page-home',
@@ -19,7 +20,12 @@ export class HomePage {
   }
 
   ionViewDidEnter() {
-    appManager.setVisible("show", ()=>{}, (err)=>{});
+    appManager.setVisible("show");
+
+    titleBarManager.setTitle("Create Packet");
+    titleBarManager.setNavigationMode(TitleBarPlugin.TitleBarNavigationMode.HOME);
+    titleBarManager.setBackgroundColor("#f04141");
+    titleBarManager.setForegroundMode(TitleBarPlugin.TitleBarForegroundMode.LIGHT);
   }
 
   showRandom() {
