@@ -32,12 +32,14 @@ export class PacketGrabbedPage implements OnInit {
     });
   }
 
-  ionViewDidEnter() {
-    appManager.setVisible("show");
-
+  ionViewWillEnter() {
     titleBarManager.setTitle("Congrats!");
     titleBarManager.setNavigationMode(TitleBarPlugin.TitleBarNavigationMode.CLOSE);
     titleBarManager.setBackgroundColor("#f04141");
     titleBarManager.setForegroundMode(TitleBarPlugin.TitleBarForegroundMode.LIGHT);
+  }
+
+  ionViewDidEnter() {
+    appManager.setVisible("show");
   }
 }

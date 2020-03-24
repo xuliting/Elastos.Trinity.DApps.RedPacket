@@ -42,13 +42,17 @@ export class PacketCreatedPage implements OnInit {
     });
   }
 
-  ionViewDidEnter() {
+  ionViewWillEnter() {
     appManager.setVisible("show");
 
     titleBarManager.setTitle("Success!");
     titleBarManager.setNavigationMode(TitleBarPlugin.TitleBarNavigationMode.CLOSE);
     titleBarManager.setBackgroundColor("#f04141");
     titleBarManager.setForegroundMode(TitleBarPlugin.TitleBarForegroundMode.LIGHT);
+  }
+
+  ionViewDidEnter() {
+    appManager.setVisible("show");
   }
 
   copy(type: string) {

@@ -3,10 +3,8 @@
   <ion-col size="6">
     <h4>Supernode</h4>
   </ion-col>
-  <ion-col size="6" class="select">
-    <ion-spinner *ngIf="packetService._nodes.length === 0" name="bubbles"></ion-spinner>
+  <ion-col *ngIf="packetService._nodes.length > 0" size="6" class="select">
     <ion-select
-      *ngIf="packetService._nodes.length > 0"
       mode="ios"
       interface="popover"
       okText="Okay"
@@ -17,6 +15,9 @@
     >
       <ion-select-option *ngFor="let node of packetService._nodes" [value]="node.Ownerpublickey">{{ node.Nickname }}</ion-select-option>
     </ion-select>
+  </ion-col>
+  <ion-col *ngIf="packetService._nodes.length === 0" offset="1.65" size="2.7" class="spinner">
+    <ion-spinner name="dots"></ion-spinner>
   </ion-col>
 </ion-row>
 

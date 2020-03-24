@@ -3,7 +3,16 @@
   justify-content: flex-end;
   align-items: center;
 
-  ion-select, ion-spinner {
+  ion-select {
+    margin-top: 10px;
+  }
+}
+
+.spinner {
+  display: flex;
+  align-items: center;
+
+  ion-spinner {
     margin-top: 10px;
   }
 }

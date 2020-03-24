@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ToastController, AlertController } from '@ionic/angular';
 
 declare let appManager: AppManagerPlugin.AppManager;
+declare let titleBarManager: TitleBarPlugin.TitleBarManager;
 
 @Component({
   selector: 'app-search',
@@ -29,14 +30,19 @@ export class SearchPage implements OnInit {
       if (params && params.hash) {
         this.hash = params.hash;
         this.showGrab();
-        // this.toastReceived(params.name);
         this.alertReceived(params.hash);
       }
     });
   }
 
+  ionViewWillEnter() {
+    titleBarManager.setTitle("Claim Packet");
+    titleBarManager.setNavigationMode(TitleBarPlugin.TitleBarNavigationMode.CLOSE);
+    titleBarManager.setBackgroundColor("#f04141");
+  }
+
   ionViewDidEnter() {
-    appManager.setVisible("show", ()=>{}, (err)=>{});
+    appManager.setVisible("show");
   }
 
   showPeek() {
